@@ -1,8 +1,9 @@
 // ===== 結果タイプの定義（data-valueの [a,b,c] の並びと対応） =====
+// 遷移先は、オペレーター＝result1 / マネジメント＝result2 / クリエイター＝result3
 const TYPES = [
-  { name: 'ファクトリーマネジメント職', detail: '' },
-  { name: 'ファクトリークリエイター職', detail: '' },
-  { name: 'ファクトリーオペレーター職', detail: '' }
+  { name: 'ファクトリーマネジメント職', url: 'result2.html' },
+  { name: 'ファクトリークリエイター職', url: 'result3.html' },
+  { name: 'ファクトリーオペレーター職', url: 'result1.html' }
 ];
 
 // ===== 選択時の画像を先読み =====
@@ -91,7 +92,11 @@ questions.forEach((question, i) => {
 
 
 // ===== 結果ボタン =====
-document.getElementById('submit-btn').addEventListener('click', () => {
+const submitBtn = document.getElementById('submit-btn');
+const loading = document.getElementById('loading');
+const LOADING_MS = 2000; // 「診断中」を見せる時間（ミリ秒）
+
+submitBtn.addEventListener('click', () => {
   // 未回答チェック
   const unanswered = answers.indexOf(null);
   if (unanswered !== -1) {
@@ -110,13 +115,22 @@ document.getElementById('submit-btn').addEventListener('click', () => {
   // 一番高いタイプを決定（同点の場合は先に書いたタイプを優先）
   const winner = totals.indexOf(Math.max(...totals));
 
-  // 画面に表示
-  document.getElementById('result-name').textContent = TYPES[winner].name;
-  document.getElementById('result-detail').textContent = TYPES[winner].detail;
+  // 二重クリックを防いで「診断中」を表示
+  submitBtn.disabled = true;
+  loading.hidden = false;
 
-  const area = document.getElementById('result-area');
-  area.hidden = false;
-  area.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  // 少し待ってから結果ページへ移動
+  setTimeout(() => {
+    location.href = TYPES[winner].url;
+  }, LOADING_MS);
+});
+
+// ブラウザの「戻る」で戻ってきたとき、診断中の表示が残らないようにする
+window.addEventListener('pageshow', (e) => {
+  if (e.persisted) {
+    loading.hidden = true;
+    submitBtn.disabled = false;
+  }
 });
 
 

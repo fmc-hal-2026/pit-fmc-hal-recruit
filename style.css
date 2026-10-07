@@ -15,12 +15,6 @@ main{
 img{
 	max-width: 100%;
 }
-h1{
-	width: 30%;
-	background-color: #fff;
-	box-shadow: 10px 10px #ffd7b3;
-	margin: auto;
-}
 .to-pagetop {
   position: fixed;
   bottom: 20px;
@@ -43,13 +37,8 @@ h1{
 
 
 .top{
-	margin: 50px auto;
-	text-align: center;
-	font-family: dnp-shuei-mgothic-std, sans-serif;
-	font-weight: 500;
-	font-style: normal;
-	font-size: 30px;
-	color: #0D47A1;
+	margin: 50px auto 0 auto;
+	max-width: 30%;
 }
 .selects{
 	display: flex;

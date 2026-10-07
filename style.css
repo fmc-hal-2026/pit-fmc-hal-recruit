@@ -51,19 +51,93 @@ img{
 	align-items: center;
 }
 .question{
-	margin: 10% 20%;
+	--card-bg: #fff;
+	--card-shadow: #2196F3;
+	position: relative;
+	width: min(760px, 90%);
+	margin: 100px auto;
 	text-align: center;
 	font-family: dnp-shuei-mgothic-std, sans-serif;
-	font-weight: 1000;
-	font-style: normal;
+	font-weight: bold;
 	font-size: 24px;
-	background-color: #E3F2FD;
-	border-radius: 30px;
-	box-shadow: 10px 10px #2196F3;
-	padding: 0 0 1px 0;
+	background-color: var(--card-bg);
+	border-radius: 0 24px 24px 24px;      /* 左上は角にしてタブとつなぐ */
+	filter: drop-shadow(8px 8px 0 var(--card-shadow));  /* タブも含めた形に影が付く */
 }
 .question p{
-	padding: 10px;
+	padding: 10px; 
+}
+
+/* 左上のタブ（問題数を表示） */
+.card_tab{
+	position: absolute;
+	top: -44px;
+	left: 0;
+	width: 200px;
+	height: 56px;
+	display: flex;
+	align-items: flex-start;
+	gap: 2px;
+	padding: 8px 0 0 24px;
+	box-sizing: border-box;
+	line-height: 1;
+	background: var(--card-bg);
+
+	/* タブの形：左上と右上が丸く、右側が斜め、カードとの接続部も丸い */
+	-webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 56'%3E%3Cpath d='M0 56V20Q0 0 20 0H150Q158 0 162 8L178 36Q182 44 192 44H200V56Z'/%3E%3C/svg%3E") no-repeat 0 0 / 200px 56px;
+	mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 56'%3E%3Cpath d='M0 56V20Q0 0 20 0H150Q158 0 162 8L178 36Q182 44 192 44H200V56Z'/%3E%3C/svg%3E") no-repeat 0 0 / 200px 56px;
+}
+.card_num{
+	font-size: 28px;
+	color: #6fa8f0;
+}
+.card_total{
+	font-size: 18px;
+	color: #A6A6A6;
+	padding-top: 10px;        /* 数字と下端をそろえる */
+}
+
+/* ヘッダー（質問文） */
+.card_head{
+	position: relative;
+	padding: 20px 28px 8px;
+	border-bottom: 4px solid #D1D1D1;
+}
+.question .card_title{
+	margin: 0;
+	padding: 0;
+	font-size: 20px;
+	text-align: left;         /* 中央にするなら center */
+}
+.card_body{ padding: 24px 20px 56px; }
+
+/* A・Bの説明文 */
+.card_flex{
+	display: flex;
+	justify-content: center;
+	gap: 6px;
+	margin: 0;
+	color: #A6A6A6;
+	font-size: 16px;
+	line-height: 1.4;
+}
+.question .card_flex p{
+	margin: 0;
+	padding: 2px 0;
+}
+
+/* 右下の折り返し */
+.question::after{
+	content: "";
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	width: 70px;
+	height: 70px;
+	background: #c3dcfa;
+	border-radius: 0 0 24px 0;
+	clip-path: polygon(100% 0, 100% 100%, 0 100%);
+	pointer-events: none;
 }
 .question_buttun{
 	margin-top: 10px;
@@ -103,10 +177,6 @@ img{
 .blue{
 	color: #0594d2;
 	margin-left: 10px;
-}
-.count{
-	width: 10%;
-	color: #E0E1E0;
 }
 .result{
 	margin: 10% 20%;

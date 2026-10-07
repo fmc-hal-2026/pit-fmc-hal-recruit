@@ -1,0 +1,177 @@
+@charset "utf-8";
+/* CSS Document */
+body{
+    font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo,dnp-shuei-mgothic-std, sans-serif;
+	color: #0D47A1;
+	font-size: 5em;
+	margin: auto;
+	background-color:#90CAF9;
+}
+main{
+	margin: auto;
+}
+img{
+	max-width: 100%;
+}
+
+.to-pagetop {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100;
+  padding: 16px;
+  background: none;
+  border: none;
+  opacity: 0;
+  transition: opacity 400ms ease;
+  cursor: pointer;
+}
+.to-pagetop.is-shown {
+  opacity: 1;
+}
+.to-pagetop img {
+  width: 80px;
+  height: auto;
+}
+
+
+.top{
+	margin: auto;
+	text-align: center;
+	font-family: dnp-shuei-mgothic-std, sans-serif;
+	font-weight: 500;
+	font-style: normal;
+	font-size: 30px;
+	color: #FFF;
+}
+.selects{
+	display: flex;
+	justify-content: center;
+	margin: auto auto 20px auto;
+	align-items: center;
+}
+.question{
+	margin: 10% 20%;
+	text-align: center;
+	font-family: dnp-shuei-mgothic-std, sans-serif;
+	font-weight: 1000;
+	font-style: normal;
+	font-size: 24px;
+	background-color: #E3F2FD;
+	border-radius: 30px;
+	box-shadow: 10px 10px #2196F3;
+	padding: 0 0 1px 0;
+}
+.question_buttun{
+	margin-top: 10px;
+}
+.question_buttun img{
+	transition: opacity 0.2s ease;
+}
+.question_buttun button{
+	background: none;
+	border: none;
+	outline: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	width: 15%;
+	height: 70px;
+	padding: 0;
+	cursor: pointer;
+	transition: transform 0.2s ease;
+}
+.question_buttun button:hover{
+	transform: scale(1.15);
+}
+.question_buttun button:active{
+	transform: scale(1.05); /* クリックした瞬間に少し戻る */
+}
+.question_buttun:has(.choice:hover) .choice[aria-pressed="true"]:not(:hover) img {
+  opacity: 0.4;
+}
+.choice img {
+  height: 100%;
+}
+.red{
+	color: #fe7e39;
+	margin-right: 10px;
+}
+.blue{
+	color: #0594d2;
+	margin-left: 10px;
+}
+.count{
+	width: 10%;
+	color: #E0E1E0;
+}
+.result{
+	margin: 10% 20%;
+	text-align: center;
+	font-family: dnp-shuei-mgothic-std, sans-serif;
+	font-size: 24px;
+}
+#submit-btn{
+	font-family: inherit;
+	font-size: 24px;
+	color: #FFF;
+	background-color: #0594d2;
+	border: none;
+	border-radius: 30px;
+	padding: 15px 50px;
+	cursor: pointer;
+	transition: .3s;
+}
+#submit-btn:hover{
+	transform: scale(1.1);
+	background-color:#0476A8;
+}
+#result-area{
+	margin-top: 30px;
+	background-color: #FFF;
+	border-radius: 30px;
+	padding: 20px;
+}
+.result_type{
+	font-size: 32px;
+	color: #0594d2;
+	margin: 10px 0;
+}
+.result_detail{
+	font-size: 20px;
+	margin: 0;
+}
+.result_label{
+	margin: 0;
+}
+
+/* 登場前：透明＆下にずらしておく */
+.question {
+  opacity: 0;
+}
+
+/* 画面に入ったらアニメーション開始 */
+.question.fadeUp {
+  animation-name: fadeUpAnime;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeUpAnime {
+  from {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* OSの設定で「視差効果を減らす」にしている人向けのアニメーション無効設定設定 */
+@media (prefers-reduced-motion: reduce) {
+  .question {
+    opacity: 1;
+    animation: none;
+  }
+}

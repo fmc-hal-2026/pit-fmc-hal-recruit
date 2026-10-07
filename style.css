@@ -5,7 +5,9 @@ body{
 	color: #0D47A1;
 	font-size: 5em;
 	margin: auto;
-	background-color:#90CAF9;
+	background-image:url("img/tile.svg");
+	background-size: 10%;
+	background-repeat: repeat;
 }
 main{
 	margin: auto;
@@ -13,7 +15,12 @@ main{
 img{
 	max-width: 100%;
 }
-
+h1{
+	width: 30%;
+	background-color: #fff;
+	box-shadow: 10px 10px #ffd7b3;
+	margin: auto;
+}
 .to-pagetop {
   position: fixed;
   bottom: 20px;
@@ -36,13 +43,13 @@ img{
 
 
 .top{
-	margin: auto;
+	margin: 50px auto;
 	text-align: center;
 	font-family: dnp-shuei-mgothic-std, sans-serif;
 	font-weight: 500;
 	font-style: normal;
 	font-size: 30px;
-	color: #FFF;
+	color: #0D47A1;
 }
 .selects{
 	display: flex;
@@ -55,7 +62,7 @@ img{
 	--card-shadow: #2196F3;
 	position: relative;
 	width: min(760px, 90%);
-	margin: 100px auto;
+	margin: 150px auto;
 	text-align: center;
 	font-family: dnp-shuei-mgothic-std, sans-serif;
 	font-weight: bold;
@@ -217,7 +224,39 @@ img{
 .result_label{
 	margin: 0;
 }
+/* 診断中の全画面表示 */
+.loading{
+	position: fixed;
+	inset: 0;
+	z-index: 200;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: rgba(144, 202, 249, 0.95);
+}
+.loading[hidden]{
+	display: none;   /* display:flex が hidden に勝ってしまうのを防ぐ */
+}
+.loading_text{
+	margin: 0;
+	font-family: dnp-shuei-mgothic-std, sans-serif;
+	font-size: 32px;
+	font-weight: bold;
+	color: #0D47A1;
+}
 
+/* 「...」を順番に点滅させる */
+.loading_dots span{
+	opacity: 0;
+	animation: dot-blink 1.2s infinite;
+}
+.loading_dots span:nth-child(2){ animation-delay: 0.2s; }
+.loading_dots span:nth-child(3){ animation-delay: 0.4s; }
+
+@keyframes dot-blink{
+	0%, 80%, 100%{ opacity: 0; }
+	40%{ opacity: 1; }
+}
 /* 登場前：透明＆下にずらしておく */
 .question {
   opacity: 0;

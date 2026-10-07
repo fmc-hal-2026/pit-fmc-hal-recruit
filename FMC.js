@@ -24,10 +24,10 @@ const toScrollTop = () => {
 const scrollEvents = () => {
   if (window.scrollY > 100) {
     pagetopBtn.classList.add('is-shown');
-  } else if (window.scrollY < 100) {
+  } else {
     pagetopBtn.classList.remove('is-shown');
   }
-}
+};
 
 pagetopBtn.addEventListener('click', toScrollTop);
 window.addEventListener('scroll', scrollEvents);
@@ -37,6 +37,16 @@ window.addEventListener('scroll', scrollEvents);
 const questions = document.querySelectorAll('.question');
 const answers = new Array(questions.length).fill(null); // 選んだ得点 [a,b,c]。未回答はnull
 
+
+// ===== タブに「1/15」を表示 =====
+questions.forEach((q, i) => {
+  const tab = q.querySelector('.card_tab');
+  tab.setAttribute('aria-hidden', 'true'); // 質問文の「Q1.」で伝わるので、読み上げは不要
+  tab.innerHTML = `<span class="card_num">${i + 1}</span><span class="card_total">/${questions.length}</span>`;
+});
+
+
+// ===== 選択肢の動作 =====
 questions.forEach((question, i) => {
   const buttons = question.querySelectorAll('.choice');
 
@@ -57,16 +67,19 @@ questions.forEach((question, i) => {
 
     // クリック時
     btn.addEventListener('click', () => {
+      // この質問の中だけ未選択に戻す
       buttons.forEach(b => {
         const img = b.querySelector('img');
         img.src = img.dataset.off;
         b.setAttribute('aria-pressed', 'false');
       });
 
+      // クリックしたものを選択状態に
       const img = btn.querySelector('img');
       img.src = img.dataset.on;
       btn.setAttribute('aria-pressed', 'true');
 
+      // data-value の "[3,0,0]" を配列に変換して保存
       try {
         answers[i] = JSON.parse(btn.dataset.value);
       } catch (e) {
@@ -75,6 +88,7 @@ questions.forEach((question, i) => {
     });
   });
 });
+
 
 // ===== 結果ボタン =====
 document.getElementById('submit-btn').addEventListener('click', () => {
@@ -104,6 +118,7 @@ document.getElementById('submit-btn').addEventListener('click', () => {
   area.hidden = false;
   area.scrollIntoView({ behavior: 'smooth', block: 'center' });
 });
+
 
 // ===== スクロールで下からふわっと登場 =====
 const observer = new IntersectionObserver((entries) => {

@@ -147,3 +147,4 @@ const observer = new IntersectionObserver((entries) => {
 });
 
 questions.forEach(q => observer.observe(q));
+

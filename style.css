@@ -7,7 +7,7 @@
 body{
     font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo,dnp-shuei-mgothic-std, sans-serif;
 	color: #0D47A1;
-	font-size: 5em;
+	font-size: 16px;
 	margin: auto;
 	background-image:url("img/tile.svg");
 	background-size: 10%;
@@ -382,6 +382,44 @@ footer p{
 	clip-path: polygon(0 0, 100% 0, calc(100% - 16px) 50%, 100% 100%, 0 100%);
 }
 
+.result_sub[hidden]{ display: none; }
+
+/* ===== シェアボタン ===== */
+.share{
+	width: min(900px, 92%);
+	margin: 40px auto 0;
+	text-align: center;
+	font-family: dnp-shuei-mgothic-std, sans-serif;
+}
+.share_label{
+	margin: 0 0 12px;
+	font-size: 18px;
+	font-weight: bold;
+	color: #fff;
+}
+.share_x{
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	padding: 14px 32px;
+	font-size: 18px;
+	font-weight: bold;
+	color: #fff;
+	text-decoration: none;
+	background: #111;
+	border-radius: 999px;
+	box-shadow: 4px 4px 0 #2f5bb7;
+	transition: transform .2s, background-color .2s;
+}
+.share_x:hover{
+	transform: scale(1.06);
+	background: #333;
+}
+
+@media (max-width: 600px){
+	.share_x{ font-size: 16px; padding: 12px 26px; }
+}
+
 /* 見出し：【 結果名 】 */
 .result_title{
 	margin: 0 0 36px;
@@ -427,9 +465,10 @@ footer p{
 .result_flex img{
 	flex: 0 0 30%;
 	width: 30%;
-	max-width: 260px;
-	aspect-ratio: 1 / 1;
+	max-width: 100%;
+	height: auto;
 	object-fit: cover;
+	padding: 10px;
 }
 .result_flex p{
 	flex: 1;
@@ -491,7 +530,7 @@ footer p{
 	font-weight: bold;
 	font-size: 24px;
 	padding: 10px;
-	color: ##2f5bb7;
+	color: #2f5bb7;
 }
 .result_explanation .accordion-area{
 	max-width: 100%;

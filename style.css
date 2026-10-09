@@ -34,6 +34,62 @@ footer p{
 	margin: 0;
 	padding: 10px;
 }
+/* =========================================
+   背景の固定SVG
+========================================= */
+.bg{
+	position: fixed;
+	inset: 0;
+	z-index: -1;            /* コンテンツより後ろ */
+	overflow: hidden;       /* はみ出した歯車でスクロールバーが出ないように */
+	pointer-events: none;   /* クリックの邪魔をしない */
+}
+.bg_item{
+	position: absolute;
+	max-width: none;        /* 全体の img{max-width:100%} を打ち消す */
+}
+
+/* 回転する歯車 */
+.bg_gear{
+	--rot: 0deg;                       /* JSがスクロール量に応じて書き換える */
+	transform: rotate(var(--rot));
+	will-change: transform;
+}
+.bg_gear1{
+	bottom: 2%;
+	left: 10%;
+	max-width:  10%;
+}
+.bg_gear2{
+	top: 20%;
+	right: 5%;
+	width: clamp(110px, 18vw, 260px);
+}
+.bg_gear3{
+	top: 0vw;
+	right: 16.5vw;
+	width: clamp(110px, 18vw, 260px);
+}
+
+/* 位置だけ固定のベルトコンベア */
+.bg_conveyor{
+	left: 0;
+	bottom: 30px;
+	max-width: 50%;
+	height: auto;
+}
+.line{
+	right: 60px;
+	top: 25%;
+	max-width: 5%;
+	height: auto;
+}
+.line2{
+	right: 10px;
+	top: -10%;
+	max-width: 5%;
+	height: auto;
+}
 
 /* ページトップボタン */
 .to-pagetop {
@@ -252,8 +308,10 @@ footer p{
 	opacity: 0;
 	animation: dot-blink 1.2s infinite;
 }
-.loading_dots span:nth-child(2){ animation-delay: 0.2s; }
-.loading_dots span:nth-child(3){ animation-delay: 0.4s; }
+.loading_dots span:nth-child(2){ animation-delay: 0.2s;
+}
+.loading_dots span:nth-child(3){ animation-delay: 0.4s; 
+}
 
 @keyframes dot-blink{
 	0%, 80%, 100%{ opacity: 0; }
@@ -551,7 +609,16 @@ footer p{
    タブレット（960px以下）
 ========================================= */
 @media (max-width: 960px) {
-	footer{ font-size: 18px; }
+	footer{ 
+		font-size: 18px;
+	}
+	
+	.bg_gear1{ max-width: none; width: 14vw; left: 6%; }
+	.bg_gear2{ width: 20vw; right: 3%; }
+	.bg_gear3{ width: 20vw; right: 20vw; }
+	.bg_conveyor{ max-width: none; width: 60%; bottom: 20px; }
+	.line { max-width: none; width: 6vw; right: 4vw; }
+	.line2{ max-width: none; width: 6vw; right: 1vw; }
 
 	.top{
 		max-width: 50%;
@@ -563,10 +630,18 @@ footer p{
 		margin: 130px auto;
 		font-size: 26px;
 	}
-	.question .card_title{ font-size: 26px; }
-	.card_flex{ font-size: 20px; }
-	.card_head{ padding: 22px 24px 10px; }
-	.card_body{ padding: 24px 24px 60px; }
+	.question .card_title{ 
+		font-size: 26px;
+	}
+	.card_flex{ 
+		font-size: 20px;
+	}
+	.card_head{ 
+		padding: 22px 24px 10px;
+	}
+	.card_body{ 
+		padding: 24px 24px 60px; 
+	}
 
 	/* 丸ボタン：画面幅に合わせて均等に並べる */
 	.question_buttun{
@@ -598,9 +673,15 @@ footer p{
 	.loading_text{ font-size: 36px; }
 
 	/* リザルトページ */
-	.result_main{ padding: 84px 32px 40px; }
-	.result_flex{ gap: 24px; }
-	.result_flex p{ font-size: 18px; }
+	.result_main{
+		padding: 84px 32px 40px;
+	}
+	.result_flex{ 
+		gap: 24px; 
+	}
+	.result_flex p{ 
+		font-size: 18px;
+	}
 }
 
 
@@ -608,26 +689,76 @@ footer p{
    スマートフォン（600px以下）
 ========================================= */
 @media (max-width: 600px) {
-	.top{ max-width: 70%; }
+	
+	.bg_gear1{
+		max-width: none;          /* PC用の max-width:10% を打ち消す */
+		width: 30vw;
+		left: -8vw;
+		bottom: 14%;
+	}
+	.bg_gear2{
+		width: 28vw;
+		right: -9vw;
+		top: 22%;
+	}
+	.bg_gear3{
+		width: 22vw;
+		right: 10vw;
+		top: -5vw;
+	}
+	.bg_conveyor{
+		max-width: none;
+		width: 85vw;
+		left: -8vw;
+		bottom: 12px;
+	}
+	.line{
+		max-width: none;
+		width: 10vw;
+		right: 2vw;
+		top: 35%;
+	}
+	.line2{
+		max-width: none;
+		width: 10vw;
+		right: 0;
+		top: -4%;
+	}
+	
+	.top{ 
+		max-width: 70%; 
+	}
 
 	.question{
 		width: 94%;
 		margin: 110px auto;
 		font-size: 22px;
 	}
-	.question .card_title{ font-size: 21px; line-height: 1.5; }
-	.card_flex{ font-size: 17px; }
-	.card_head{ padding: 18px 18px 8px; }
-	.card_body{ padding: 12px; }
+	.question .card_title{ 
+		font-size: 21px; line-height: 1.5;
+	}
+	.card_flex{ 
+		font-size: 17px;
+	}
+	.card_head{ 
+		padding: 18px 18px 8px; 
+	}
+	.card_body{ 
+		padding: 12px;
+	}
 
-	.selects{ margin-bottom: 8px; }
+	.selects{ 
+		margin-bottom: 8px; 
+	}
 	.selects .red,
 	.selects .blue{
 		margin-left: 0;
 		margin-right: 0;
 		padding: 4px;        /* A・B の左右の余白を詰める */
 	}
-	.question_buttun{ gap: 1.5%; }
+	.question_buttun{
+		gap: 1.5%; 
+	}
 
 	/* 折り返しを少し小さく */
 	.question::after{
@@ -636,9 +767,13 @@ footer p{
 	}
 
 	/* タッチ操作では、拡大のホバー効果を無効にする */
-	.question_buttun button:hover{ transform: none; }
+	.question_buttun button:hover{ 
+		transform: none;
+	}
 
-	.result{ margin: 14% 6%; }
+	.result{
+		margin: 14% 6%; 
+	}
 	#submit-btn{
 		font-size: 22px;
 		padding: 16px 44px;
@@ -693,5 +828,12 @@ footer p{
 		margin: 36px 0 0 6px;
 	}
 	.result_sub_link{ font-size: 15px; }
-	.result_explanation > p{ font-size: 18px; }
+	.result_explanation > p{
+		font-size: 18px; 
+		width: 92%;
+		border-left-width: 12px;
+	}
+	.accordion-area{
+		padding: 16px;
+	}
 }

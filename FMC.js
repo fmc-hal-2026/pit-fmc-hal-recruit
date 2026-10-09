@@ -1,10 +1,13 @@
 // ===== 結果タイプの定義（data-valueの [a,b,c] の並びと対応） =====
 // 遷移先は、オペレーター＝result1 / マネジメント＝result2 / クリエイター＝result3
 const TYPES = [
-  { name: 'ファクトリーマネジメント職', url: 'result2.html' },
-  { name: 'ファクトリークリエイター職', url: 'result3.html' },
-  { name: 'ファクトリーオペレーター職', url: 'result1.html' }
+  { id: 1, name: 'ファクトリーマネジメント職', url: 'result1.html' },
+  { id: 2, name: 'ファクトリークリエイター職', url: 'result2.html' },
+  { id: 3, name: 'ファクトリーオペレーター職', url: 'result3.html' }
 ];
+
+// 1位との点差がこの値以内なら「こちらも当てはまるかも？」を表示する
+const SUB_DIFF = 1;
 
 // ===== 選択時の画像を先読み =====
 document.querySelectorAll('.choice img').forEach(img => {
@@ -97,33 +100,47 @@ const loading = document.getElementById('loading');
 const LOADING_MS = 2000; // 「診断中」を見せる時間（ミリ秒）
 
 submitBtn.addEventListener('click', () => {
-  // 未回答チェック
+
   const unanswered = answers.indexOf(null);
+
   if (unanswered !== -1) {
     alert(`Q${unanswered + 1} が未回答です`);
-    questions[unanswered].scrollIntoView({ behavior: 'smooth', block: 'center' });
+    questions[unanswered].scrollIntoView({
+      behavior: 'smooth',
+      block: 'center'
+    });
     return;
   }
 
-  // 3種類の合計を計算
   const totals = [0, 0, 0];
+
   answers.forEach(points => {
-    points.forEach((p, t) => { totals[t] += p; });
+    points.forEach((p, t) => {
+      totals[t] += p;
+    });
   });
-  console.log('合計点:', totals); // 確認用
 
-  // 一番高いタイプを決定（同点の場合は先に書いたタイプを優先）
-  const winner = totals.indexOf(Math.max(...totals));
+  const ranking = totals
+    .map((score, i) => ({ i, score }))
+    .sort((a, b) => b.score - a.score || a.i - b.i);
 
-  // 二重クリックを防いで「診断中」を表示
+  const winner = ranking[0].i;
+  const second = ranking[1];
+
+  let nextUrl = TYPES[winner].url;
+
+  if (ranking[0].score - second.score <= SUB_DIFF) {
+    nextUrl += `?sub=${TYPES[second.i].id}`;
+  }
+
   submitBtn.disabled = true;
   loading.hidden = false;
 
-  // 少し待ってから結果ページへ移動
   setTimeout(() => {
-    location.href = TYPES[winner].url;
+    location.href = nextUrl;
   }, LOADING_MS);
-});
+
+}); 
 
 // ブラウザの「戻る」で戻ってきたとき、診断中の表示が残らないようにする
 window.addEventListener('pageshow', (e) => {

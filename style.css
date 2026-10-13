@@ -57,25 +57,25 @@ footer p{
 	will-change: transform;
 }
 .bg_gear1{
-	bottom: 2%;
-	left: 10%;
+	bottom: 1vw;
+	left: 10vw;
 	max-width:  10%;
 }
 .bg_gear2{
-	top: 20%;
-	right: 5%;
+	top: 12vw;
+	right: 5vw;
 	width: clamp(110px, 18vw, 260px);
 }
 .bg_gear3{
-	top: 0vw;
-	right: 16.5vw;
+	top: -1vw;
+	right: 13.5vw;
 	width: clamp(110px, 18vw, 260px);
 }
 
 /* 位置だけ固定のベルトコンベア */
 .bg_conveyor{
 	left: 0;
-	bottom: 30px;
+	bottom: 2vw;
 	max-width: 50%;
 	height: auto;
 }

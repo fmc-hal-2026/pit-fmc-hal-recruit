@@ -3,25 +3,80 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="twitter:card"
-      content="summary_large_image">
-	<meta name="twitter:image"
-      content="https://fmc-hal-2026.github.io/pit-fmc-hal-recruit/img/share_result1.png">
 	<title>私は「ファクトリーマネジメント職」でした｜適職診断</title>
 
+	<!-- Xなどに共有されたときのカード設定 -->
 	<meta property="og:title" content="私は「ファクトリーマネジメント職」でした｜適職診断">
 	<meta property="og:description" content="あなたに向いている職種を診断します。あなたも診断してみませんか？">
 	<meta property="og:image" content="https://fmc-hal-2026.github.io/pit-fmc-hal-recruit/img/share_result1.png">
 	<meta property="og:url" content="https://fmc-hal-2026.github.io/pit-fmc-hal-recruit/share_1.html">
 	<meta property="og:type" content="website">
 	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="https://fmc-hal-2026.github.io/pit-fmc-hal-recruit/img/share_result1.png">
 
-	<!-- 人が開いたときだけ、診断ページへ移動する（Xの読み取りはJSを動かさない） -->
-	<script>
-		location.replace('./index.html');
-	</script>
+	<style>
+		*{ box-sizing: border-box; }
+		body{
+			margin: 0;
+			min-height: 100vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 24px;
+			font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+			color: #0D47A1;
+			background: #90CAF9 url("img/tile.svg") repeat;
+			background-size: 10%;
+		}
+		.share_card{
+			width: min(640px, 100%);
+			padding: 32px 24px 36px;
+			text-align: center;
+			background: #fff;
+			border-radius: 24px;
+			box-shadow: 8px 8px 0 #2196F3;
+		}
+		.share_card h1{
+			margin: 0 0 20px;
+			font-size: clamp(20px, 5vw, 28px);
+			line-height: 1.5;
+		}
+		.share_card img{
+			display: block;
+			width: 100%;
+			height: auto;
+			margin: 0 auto 24px;
+			border-radius: 12px;
+		}
+		.share_card p{
+			margin: 0 0 24px;
+			font-size: 16px;
+			line-height: 1.8;
+			color: #333;
+		}
+		.share_btn{
+			display: inline-block;
+			padding: 16px 44px;
+			font-size: 20px;
+			font-weight: bold;
+			color: #fff;
+			text-decoration: none;
+			background: #0594d2;
+			border-radius: 999px;
+			transition: transform .2s, background-color .2s;
+		}
+		.share_btn:hover{
+			transform: scale(1.06);
+			background: #0476A8;
+		}
+	</style>
 </head>
 <body>
-	<p><a href="index.html">診断ページへ移動する</a></p>
+	<main class="share_card">
+		<h1>診断結果をチェック！</h1>
+		<img src="img/share_result1.png" alt="診断結果：ファクトリーマネジメント職">
+		<p>あなたも15問の質問に答えて、<br>自分に向いている職種を診断してみませんか？</p>
+		<a class="share_btn" href="./index.html">診断ページへ進む</a>
+	</main>
 </body>
 </html>

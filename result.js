@@ -29,8 +29,7 @@ document.querySelectorAll('.accordion-area .title').forEach(btn => {
 
 // ===== Xで共有 =====
 document.querySelectorAll('.share_x').forEach(link => {
-  // 共有するURL：この結果ページ自身（?や#以降は外す）
-  const pageUrl = location.href.split(/[?#]/)[0];
+  const pageUrl = link.dataset.url || location.href.split(/[?#]/)[0];
 
   const params = new URLSearchParams();
   params.set('text', link.dataset.text || '');

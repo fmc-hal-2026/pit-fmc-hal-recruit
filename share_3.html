@@ -3,35 +3,43 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>私は「ファクトリークリエイター職」でした｜適職診断</title>
+	<title>私は「ファクトリーオペレーター職」でした｜適職診断</title>
 
 	<!-- Xなどに共有されたときのカード設定 -->
-	<meta property="og:title" content="私は「ファクトリークリエイター職」でした｜適職診断">
+	<meta property="og:title" content="私は「ファクトリーオペレーター職」でした｜適職診断">
 	<meta property="og:description" content="あなたに向いている職種を診断します。あなたも診断してみませんか？">
-	<meta property="og:image" content="https://fmc-hal-2026.github.io/pit-fmc-hal-recruit/img/share_result2.png">
-	<meta property="og:url" content="https://fmc-hal-2026.github.io/pit-fmc-hal-recruit/share_2.html">
+	<meta property="og:image" content="https://fmc-hal-2026.github.io/pit-fmc-hal-recruit/img/share_result3.png">
+	<meta property="og:url" content="https://fmc-hal-2026.github.io/pit-fmc-hal-recruit/share_3.html">
 	<meta property="og:type" content="website">
 	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:image" content="https://fmc-hal-2026.github.io/pit-fmc-hal-recruit/img/share_result2.png">
+	<meta name="twitter:image" content="https://fmc-hal-2026.github.io/pit-fmc-hal-recruit/img/share_result3.png">
 
+	<link rel="stylesheet" href="style.css">
+	<script>
+	  (function(d) {
+		var config = {
+		  kitId: 'rfs6ffm',
+		  scriptTimeout: 3000,
+		  async: true
+		},
+		h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+	  })(document);
+	</script>
+
+	<!-- このページ専用のスタイル（背景・ロゴ・フッターは style.css を使用） -->
 	<style>
-		*{ box-sizing: border-box; }
 		body{
-			margin: 0;
 			min-height: 100vh;
 			display: flex;
-			align-items: center;
-			justify-content: center;
-			padding: 24px;
-			font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
-			color: #0D47A1;
-			background: #90CAF9 url("img/tile.svg") repeat;
-			background-size: 10%;
+			flex-direction: column;
 		}
+		.main{ flex: 1; }
 		.share_card{
-			width: min(640px, 100%);
+			width: min(640px, 92%);
+			margin: 40px auto 80px;
 			padding: 32px 24px 36px;
 			text-align: center;
+			font-family: dnp-shuei-mgothic-std, "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
 			background: #fff;
 			border-radius: 24px;
 			box-shadow: 8px 8px 0 #2196F3;
@@ -72,12 +80,30 @@
 	</style>
 </head>
 <body>
-	<main class="share_card">
-		<h1>診断結果をチェック！</h1>
-		<img src="img/share_result1.png" alt="診断結果：ファクトリークリエイター職">
-		<p>あなたも15問の質問に答えて、<br>自分に向いている職種を診断してみませんか？</p>
-		<a class="share_btn" href="./index.html">診断ページへ進む</a>
+	<div class="bg" aria-hidden="true">
+		<img src="img/haguruma_m.svg"   class="bg_item bg_gear bg_gear1" data-speed="0.15"  alt="">
+		<img src="img/haguruma_s.svg" class="bg_item bg_gear bg_gear2" data-speed="-0.25" alt="">
+		<img src="img/haguruma_s2.svg"   class="bg_item bg_gear bg_gear3" data-speed="0.15"  alt="">
+		<img src="img/Conveyor.svg"   class="bg_item bg_conveyor"  alt="">
+		<img src="img/curve line.svg"   class="bg_item line"  alt="">
+		<img src="img/curve line_2.svg"   class="bg_item line2"  alt="">
+	</div>
+	<main class="main">
+		<section class="top">
+			<img src="img/sindan2.svg" alt="適職診断">
+		</section>
+		<section class="share_card">
+			<h1>診断結果をチェック！</h1>
+			<img src="img/share_result3.png" alt="診断結果：ファクトリーオペレーター職">
+			<p>あなたも15問の質問に答えて、<br>自分に向いている職種を診断してみませんか？</p>
+			<a class="share_btn" href="./index.html">診断ページへ進む</a>
+		</section>
 	</main>
+	<footer>
+		<img src="img/logo.png" alt="株式会社FMC">
+		<p>COPYRIGHT(C) FMC Co., Ltd. All Rights Reserved.</p>
+	</footer>
+	<script src="bg.js"></script>
 </body>
 </html>断結果をチェック！</h1>
 

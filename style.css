@@ -33,6 +33,7 @@ footer img{
 footer p{
 	margin: 0;
 	padding: 10px;
+	font-size: 16px;
 }
 /* =========================================
    背景の固定SVG
@@ -79,14 +80,14 @@ footer p{
 	height: auto;
 }
 .line{
-	right: 60px;
-	top: 25%;
+	right: 6vw;
+	top: 9vw;
 	max-width: 5%;
 	height: auto;
 }
 .line2{
-	right: 10px;
-	top: -10%;
+	right: 1vw;
+	top: -10vw;
 	max-width: 5%;
 	height: auto;
 }
@@ -656,7 +657,7 @@ footer p{
 	.bg_gear2{ width: 20vw; right: 3%; }
 	.bg_gear3{ width: 20vw; right: 20vw; }
 	.bg_conveyor{ max-width: none; width: 60%; bottom: 20px; }
-	.line { max-width: none; width: 6vw; right: 4vw; }
+	.line { max-width: none; width: 6vw; right: 4vw; top: 15vw; }
 	.line2{ max-width: none; width: 6vw; right: 1vw; }
 
 	.top{
@@ -754,14 +755,14 @@ footer p{
 	.line{
 		max-width: none;
 		width: 10vw;
-		right: 2vw;
-		top: 35%;
+		right: 4vw;
+		top: 36vw;
 	}
 	.line2{
 		max-width: none;
 		width: 10vw;
 		right: 0;
-		top: -4%;
+		top: -4vw;
 	}
 	
 	.top{ 

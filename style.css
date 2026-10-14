@@ -628,6 +628,29 @@ footer p{
 	border-radius: 16px;
 }
 
+/* ===== 会社Webへ移動するボタン ===== */
+.company_link{
+	width: min(900px, 92%);
+	margin: 20px auto 80px;
+	text-align: center;
+}
+.company_btn{
+	display: inline-block;
+	padding: 18px 56px;
+	font-family: dnp-shuei-mgothic-std, sans-serif;
+	font-size: 22px;
+	font-weight: bold;
+	color: #fff;
+	text-decoration: none;
+	background: #0594d2;
+	border-radius: 999px;
+	box-shadow: 4px 4px 0 #2f5bb7;
+	transition: transform .2s, background-color .2s;
+}
+.company_btn:hover{
+	transform: scale(1.06);
+	background: #0476A8;
+}
 
 /* =========================================
    動きを減らす設定のとき
@@ -875,5 +898,9 @@ footer p{
 	}
 	.accordion-area{
 		padding: 16px;
+	}
+	.company_btn{
+		font-size: 18px;
+		padding: 16px 36px;
 	}
 }
